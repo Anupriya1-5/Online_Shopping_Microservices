@@ -34,6 +34,8 @@ The project contains three microservices:
 - Docker Compose
 - Requests
 ## Project Structure
+
+```text
 OnlineShoppingMicroservices/
 │
 ├── product-service/
@@ -51,46 +53,103 @@ OnlineShoppingMicroservices/
 │   ├── app.py
 │   └── requirements.txt
 │
+├── Outputs/
+│   ├── 1_response_time.png
+│   ├── 2_throughput.png
+│   ├── 3_cpu_utilization.png
+│   └── 4_memory_usage.png
+│
 ├── docker-compose.yml
 ├── load_test.py
 └── README.md
+```
 ## Product Service
+
 Manages product information.
+
+
+
+```text
 GET /products
 GET /products/<id>
 GET /health
-Port:
-5000
+```
+
+**Port:** `5000`
+
+---
+
 ## User Service
+
 Manages user information.
+
+
+
+```text
 GET /users
 GET /users/<id>
 GET /health
-Port:
-5001
+```
+
+**Port:** `5001`
+
+---
+
 ## Order Service
+
 Creates orders and communicates with the Product and User Services.
+
+
+
+```text
 POST /orders
 GET /orders
 GET /health
-Port:
-5002
+```
+
+**Port:** `5002`
+
+---
 ## Dockerization
-Build the Docker images:
+
+### Build Docker Images
+
+```cmd
 docker compose build
-Start the services:
+```
+
+### Start the Services
+
+```cmd
 docker compose up -d
-Check running containers:
+```
+
+### Check Running Containers
+
+```cmd
 docker ps
+```
 ## Inter-Service Communication
+
 The Order Service communicates with both Product Service and User Service.
+
+```text
 Order Service
      |
      +----> Product Service
      |
      +----> User Service
-Test an order:
+```
+
+### Test an Order
+
+```cmd
 curl -X POST http://127.0.0.1:5002/orders -H "Content-Type: application/json" -d "{\"user_id\":1,\"product_id\":1,\"quantity\":2}"
+```
+
+### Result
+
+The order is successfully created after the Order Service communicates with the Product Service and User Service.
 ## Workload Testing
 Five workload levels were tested:
 | Workload | Concurrent Requests |
@@ -101,7 +160,23 @@ Five workload levels were tested:
 | W4 | 8 |
 | W5 | 16 |
 
+## Performance Graphs
 
+### 1. Concurrent Requests vs Response Time
+
+![Response Time](Outputs/1_response_time.png)
+
+### 2. Concurrent Requests vs Throughput
+
+![Throughput](Outputs/2_throughput.png)
+
+### 3. Concurrent Requests vs CPU Utilization
+
+![CPU Utilization](Outputs/3_cpu_utilization.png)
+
+### 4. Concurrent Requests vs Memory Usage
+
+![Memory Usage](Outputs/4_memory_usage.png)
 ## Performance Analysis
 - Throughput increased as concurrency increased.
 - Response time increased at higher workload levels.
