@@ -151,15 +151,18 @@ curl -X POST http://127.0.0.1:5002/orders -H "Content-Type: application/json" -d
 
 The order is successfully created after the Order Service communicates with the Product Service and User Service.
 ## Workload Testing
-Five workload levels were tested:
-| Workload | Concurrent Requests |
-|---|---:|
-| W1 | 1 |
-| W2 | 2 |
-| W3 | 4 |
-| W4 | 8 |
-| W5 | 16 |
 
+Five workload levels were tested with different concurrency levels. Each workload used 500 requests.
+
+![Workload Results](Outputs/workload_results.png)
+
+### Overall Result
+
+- **Total Requests:** 2500
+- **Successful Requests:** 2500
+- **Failed Requests:** 0
+- **Maximum Throughput:** 302.69 req/s
+- **Highest Response Time:** 0.0517 s
 ## Performance Graphs
 
 ### 1. Concurrent Requests vs Response Time
