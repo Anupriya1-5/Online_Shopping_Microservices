@@ -154,7 +154,7 @@ The order is successfully created after the Order Service communicates with the 
 
 Five workload levels were tested with different concurrency levels. Each workload used 500 requests.
 
-![Workload Results](Outputs/workload_results.png)
+![Workload Results](Outputs/workload.png)
 
 ### Overall Result
 
