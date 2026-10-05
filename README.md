@@ -109,8 +109,4 @@ Five workload levels were tested:
 - Order Service was the relatively resource-heavy service.
 - At higher concurrency, throughput improvement became smaller.
 ## Conclusion
-The Online Shopping microservices application was successfully developed, Dockerized, deployed, and tested.
-The three services communicated successfully with each other.
-A total of 2500 requests were tested, and all requests were completed successfully.
-The experiment showed that increasing concurrency improves throughput, while response time increases at higher workload levels.
-```
+The Online Shopping microservices application was successfully developed, Dockerized, deployed, and tested. The three microservices communicated successfully through REST APIs, and all **2,500 workload requests were completed successfully with zero failures**. The performance analysis showed that increasing concurrency improved system throughput, while response time increased at higher workload levels. Overall, the experiment demonstrated the successful implementation, deployment, and performance evaluation of a microservices-based application.
